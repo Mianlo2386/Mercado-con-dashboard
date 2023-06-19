@@ -1,0 +1,33 @@
+<%-include('../partials/head') -%>
+<div class="col-9">
+    <div class="container p-3 w-100">
+        <h1 class="mt-5 mb-4">Todos los usuarios</h1>
+        <table class="table table-bordered " width="100%">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%users.forEach(user=>{ %>
+                    <tr>
+                        <td>"<%="user.name"%>"</td>
+                        <td>"<%="user.email"%>"</td>
+                        <td>
+                            <a class="btn btn-primary" href="/edituser/<%=user.id%>">Editar</a>
+                            <form action="/eliminar/user" method="post">
+                                <button type="submit" class="btn btn-danger ml-2">Eliminar</button>
+                            </form>
+                            
+                        </td>
+                    </tr>
+                <% })%>
+
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+<%-include('../partials/footer')%>
