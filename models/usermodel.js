@@ -1,6 +1,6 @@
 import mongoose, { Schema,model } from 'mongoose'
-
-let userScheme=new mongoose.Schema({
+import passportLocalMongoose from 'passport-local-mongoose'
+let userScheme=new Schema({
     name:String,
     email:String,
     password:{
@@ -11,4 +11,5 @@ let userScheme=new mongoose.Schema({
     resetPasswordExpires:Date
 })
 
+userScheme.plugin(passportLocalMongoose,{usernameField:'email'})
 export default model('User',userScheme)

@@ -15,6 +15,10 @@ router.get('/login',(req,res)=>{
     res.render('users/login')
 })
 
+router.get('/registrar',(req,res)=>{
+    res.render('users/registrar')
+})
+
 router.post('/login',passport.authenticate('local',{
     successRedirect:'/dashboard',
     failureRedirect:'/login',
@@ -29,11 +33,11 @@ router.post('/registrar',(req,res)=>{
     }
     User.register(userData,password,(error,user)=>{
         if(error){
-            req.flash('error_msg','ERROR:'+error)
-            res.redirect('/registrar')
+            //req.flash('error_msg','ERROR:'+error)
+            res.redirect('/login')
         }
-        req.flash('success_msg','Cuenta creada')
-        res.render('users/registrar')
+        //req.flash('success_msg','Cuenta creada')
+        res.render('users/login')
     })
     
 })
